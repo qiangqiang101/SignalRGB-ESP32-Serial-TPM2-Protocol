@@ -1,5 +1,5 @@
 import Serial from "@SignalRGB/serial";
-export function Name() { return "ESP32 Device"; }
+export function Name() { return "Silicon Labs CP210x"; }
 export function VendorId() { return 0x10C4; }
 export function ProductId() { return 0xEA60; }
 export function Publisher() { return "I'm Not MentaL"; }
@@ -27,6 +27,8 @@ export function ControllableParameters() {
 export function Initialize() {
 	const deviceInfo = Serial.getDeviceInfo();
 	console.log(deviceInfo);
+
+	device.setName(deviceInfo.driverDesc);
 
 	Serial.disconnect();
 	Serial.connect({ baudRate: 115200, dataBits: 8, stopBits: 'One', parity: 'None' });
@@ -126,5 +128,5 @@ export function Shutdown(SystemSuspending) {
 	if (Serial.isConnected()) Serial.disconnect();
 }
 
-const MaxLeds = 1000;
+const MaxLeds = 80; // Could go higher a bit, but mine freezes with 85
 const MaxLedsPerPacket = 300;
