@@ -1,4 +1,4 @@
-# SignalRGB ESP32 Serial TPM2 Protocol
+# SignalRGB ESP32/ESP8266 Serial TPM2 Protocol
 Currenly supported devices
 | ESP32               | Vendor ID | Product ID |
 | ------------------- | --------- | ---------- |
